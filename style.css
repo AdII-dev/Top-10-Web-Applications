@@ -1,0 +1,22 @@
+tr:nth-child(even){
+    background-color: #457468;
+    color: wheat;
+}
+body{
+    background-color: darkslategray;
+    color: wheat;
+}
+tr{
+    color: wheat;
+}
+.container{
+    width: 60%;
+    margin: auto;
+    padding: 20px;
+    border-radius: 5px;
+}
+th,td{
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid;
+}

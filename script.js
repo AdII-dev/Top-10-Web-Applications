@@ -11,12 +11,24 @@ let webAppsData = [
     {"name": "Google Drive", "users": "1 Billion"}
 ];
 //Adat konvertálása számmá billion, million
+function convert(usersString){
+    let users = parseFloat(usersString)
+    if (usersString.includes('Billion')){
+        users *=1000;
+    }
+    return users;
+}
 
 //Táblázatba az adatok beolvasása
 function buildTable(data){
     //táblázat elemeinek eltárolása
     let table = document.getElementById("webAppsTable");
     console.log(table);
+    //ha vannak sorok, törölje le!
+    while(table.rows.length > 1){
+        table.deleteRow(1);
+    }
+    
     for (let i = 0; i < data.length; i++) {
         //Szükséges html elemek létrehozása  
         let row = document.createElement('tr');
@@ -38,7 +50,17 @@ function buildTable(data){
 window.onload = function() {
     buildTable(webAppsData);
 
+    //sortMost
+    document.getElementById("sortMost").addEventListener('click', function(){webAppsData.sort(function(a,b){
+        return convert(b.users) - convert(a.users);
+    })
+    buildTable(webAppsData);
+});
+    //sortFewest
+    document.getElementById("sortFewest").addEventListener('click', function(){webAppsData.sort(function(a,b){
+        return convert(b.users) - convert(a.users);
+    })
+    buildTable(webAppsData);
+})
+
 }
-
-
-
